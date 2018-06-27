@@ -7,6 +7,8 @@
 
 Converts a jcamp to a jsgraph json format.
 
+This library will also have the possibility to change the units on the fly and extract the xUnits and yUnits to display on the corresponding axis.
+
 ## Installation
 
 `$ npm install --save jcamp-to-jsgraph`
@@ -14,10 +16,34 @@ Converts a jcamp to a jsgraph json format.
 ## Usage
 
 ```js
-import library from 'jcamp-to-jsgraph';
+import convert from 'jcamp-to-jsgraph';
 
-const result = library(args);
-// result is ...
+const jcamp=`##TITLE=
+##JCAMP-DX=4.24
+##DATA TYPE=IV SPECTRUM
+##ORIGIN=
+##OWNER=
+##XUNITS=mV
+##YUNITS=mA
+##FIRSTX=1
+##LASTX=5
+##FIRSTY=1
+##LASTY=4
+##$header=
+##NPOINTS=5
+##PEAK TABLE=(XY..XY)
+1 2
+2 3
+3 4
+4 2
+5 1
+##END
+`
+const options={};
+
+const result = convert(jcamp, options);
+
+
 ```
 
 ## [API Documentation](https://cheminfo.github.io/jcamp-to-jsgraph/)
